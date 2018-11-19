@@ -1,0 +1,5 @@
+NAME=bridge
+S2I_BASE_IMAGE=openjdk18-openshift:latest
+GIT_SOURCE_REF=labs-concepts
+GIT_SOURCE_URI=https://github.com/jacobsee/industry-4.0-demo
+GIT_SOURCE_CONTEXT_DIR=bridge

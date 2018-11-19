@@ -1,0 +1,143 @@
+
+PLAY [Build and Deploy iot app] **************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************
+ok: [app-build-deploy]
+
+TASK [include_role : openshift-applier/roles/openshift-applier] ******************************************
+
+TASK [openshift-applier/roles/openshift-applier : Check applier requirements] ****************************
+included: /home/jacob/Labs/industry-4.0-demo/bridge/.openshift-applier/roles/openshift-applier/roles/openshift-applier/tasks/pre-check.yml for app-build-deploy
+
+TASK [openshift-applier/roles/openshift-applier : Exit if ansible version doesn't meet minimum requirements] ***
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Retrieve oc client version] ****************************
+changed: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Filter out just the oc version number] *****************
+ok: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Do *not* use the 'ignore_unknown_parameters' flag if 'oc' version is older than 3.7] ***
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Error out on anything in the inventory that is no longer supported] ***
+included: /home/jacob/Labs/industry-4.0-demo/bridge/.openshift-applier/roles/openshift-applier/roles/openshift-applier/tasks/error-on-unsupported.yml for app-build-deploy
+
+TASK [openshift-applier/roles/openshift-applier : Look for unsupported top-level dictionary entries] *****
+skipping: [app-build-deploy] => (item=content_dir) 
+
+TASK [openshift-applier/roles/openshift-applier : Look for unsupported content-level dictionary entries] ***
+skipping: [app-build-deploy] => (item=[{'object': 'app-builds', 'content': [{'name': 'bridge-build', 'template': 'templates/app-build.yml', 'params_from_vars': {'NAME': 'bridge', 'S2I_BASE_IMAGE': 'openjdk18-openshift:latest', 'GIT_SOURCE_REF': 'labs-concepts', 'GIT_SOURCE_URI': 'https://github.com/jacobsee/industry-4.0-demo.git', 'GIT_SOURCE_CONTEXT_DIR': 'bridge'}, 'namespace': 'jacob-iot-temp', 'tags': ['app-build']}]}, 'file_action']) 
+skipping: [app-build-deploy] => (item=[{'object': 'app-builds', 'content': [{'name': 'bridge-build', 'template': 'templates/app-build.yml', 'params_from_vars': {'NAME': 'bridge', 'S2I_BASE_IMAGE': 'openjdk18-openshift:latest', 'GIT_SOURCE_REF': 'labs-concepts', 'GIT_SOURCE_URI': 'https://github.com/jacobsee/industry-4.0-demo.git', 'GIT_SOURCE_CONTEXT_DIR': 'bridge'}, 'namespace': 'jacob-iot-temp', 'tags': ['app-build']}]}, 'template_action']) 
+
+TASK [openshift-applier/roles/openshift-applier : Error out if any unsupported items were found] *********
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Pull in Galaxy requirements - if set] ******************
+skipping: [app-build-deploy] => (item={'object': 'app-builds', 'content': [{'name': 'bridge-build', 'template': 'templates/app-build.yml', 'params_from_vars': {'NAME': 'bridge', 'S2I_BASE_IMAGE': 'openjdk18-openshift:latest', 'GIT_SOURCE_REF': 'labs-concepts', 'GIT_SOURCE_URI': 'https://github.com/jacobsee/industry-4.0-demo.git', 'GIT_SOURCE_CONTEXT_DIR': 'bridge'}, 'namespace': 'jacob-iot-temp', 'tags': ['app-build']}]}) 
+
+TASK [openshift-applier/roles/openshift-applier : Create a temporary directory to use] *******************
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Store away the temporary directory path] ***************
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Create OpenShift objects] ******************************
+included: /home/jacob/Labs/industry-4.0-demo/bridge/.openshift-applier/roles/openshift-applier/roles/openshift-applier/tasks/process-content.yml for app-build-deploy
+
+TASK [openshift-applier/roles/openshift-applier : Include any pre-processing role(s) before applying content] ***
+included: /home/jacob/Labs/industry-4.0-demo/bridge/.openshift-applier/roles/openshift-applier/roles/openshift-applier/tasks/pre-post-step.yml for app-build-deploy
+
+TASK [openshift-applier/roles/openshift-applier : Set facts to make variables available to the role] *****
+
+TASK [Include the pre/post step role] ********************************************************************
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Clear facts to ensure that they don't carry over] ******
+
+TASK [openshift-applier/roles/openshift-applier : Create/Apply OpenShift Cluster Content ('app-builds') - based on individual files] ***
+included: /home/jacob/Labs/industry-4.0-demo/bridge/.openshift-applier/roles/openshift-applier/roles/openshift-applier/tasks/process-one-entry.yml for app-build-deploy
+
+TASK [openshift-applier/roles/openshift-applier : Set default values] ************************************
+ok: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Set oc_action to delete when in deprovision mode] ******
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Set no_log when specified] *****************************
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Set the target namespace option if supplied] ***********
+ok: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Include any pre-processing role(s) before applying file and/or template] ***
+included: /home/jacob/Labs/industry-4.0-demo/bridge/.openshift-applier/roles/openshift-applier/roles/openshift-applier/tasks/pre-post-step.yml for app-build-deploy
+
+TASK [openshift-applier/roles/openshift-applier : Set facts to make variables available to the role] *****
+
+TASK [Include the pre/post step role] ********************************************************************
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Clear facts to ensure that they don't carry over] ******
+
+TASK [openshift-applier/roles/openshift-applier : Process Template (if applicable)] **********************
+included: /home/jacob/Labs/industry-4.0-demo/bridge/.openshift-applier/roles/openshift-applier/roles/openshift-applier/tasks/process-template.yml for app-build-deploy
+
+TASK [openshift-applier/roles/openshift-applier : Reset Command Line Options] ****************************
+ok: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Check whether parameters file exists] ******************
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Fail when params file does  not exist] *****************
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Append '/*' when location is a directory] **************
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Build a list --param-file command line parameters] *****
+
+TASK [openshift-applier/roles/openshift-applier : Change 'params_from_vars' fact (if applicable) into command line parameters] ***
+ok: [app-build-deploy] => (item={'key': 'NAME', 'value': 'bridge'})
+ok: [app-build-deploy] => (item={'key': 'S2I_BASE_IMAGE', 'value': 'openjdk18-openshift:latest'})
+ok: [app-build-deploy] => (item={'key': 'GIT_SOURCE_REF', 'value': 'labs-concepts'})
+ok: [app-build-deploy] => (item={'key': 'GIT_SOURCE_URI', 'value': 'https://github.com/jacobsee/industry-4.0-demo.git'})
+ok: [app-build-deploy] => (item={'key': 'GIT_SOURCE_CONTEXT_DIR', 'value': 'bridge'})
+
+TASK [openshift-applier/roles/openshift-applier : Clear process file facts"] *****************************
+ok: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Copy inventory file to remote] *************************
+included: /home/jacob/Labs/industry-4.0-demo/bridge/.openshift-applier/roles/openshift-applier/roles/openshift-applier/tasks/copy-inventory-file-to-remote.yml for app-build-deploy
+
+TASK [openshift-applier/roles/openshift-applier : Determine location for the file] ***********************
+ok: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Create target directory to ensure it exists] ***********
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Copy file to target directory] *************************
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Update file path to include the tmp_inv_dir path] ******
+skipping: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Add the processed file to the list of files] ***********
+ok: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Set template file facts] *******************************
+ok: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Copy inventory file list to remote] ********************
+
+TASK [openshift-applier/roles/openshift-applier : Set param file facts] **********************************
+ok: [app-build-deploy]
+
+TASK [openshift-applier/roles/openshift-applier : Apply OpenShift objects based on template with params for 'app-builds : bridge-build'] ***
+fatal: [app-build-deploy]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'ansible.utils.unsafe_proxy.AnsibleUnsafeText object' has no attribute 'oc_path'\n\nThe error appears to have been in '/home/jacob/Labs/industry-4.0-demo/bridge/.openshift-applier/roles/openshift-applier/roles/openshift-applier/tasks/process-template.yml': line 66, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- name: \"{{ oc_action | capitalize }} OpenShift objects based on template with params for '{{ entry.object}} : {{ content.name | default(template | basename) }}'\"\n  ^ here\nThis one looks easy to fix.  YAML thought it was looking for the start of a\nhash/dictionary and was confused to see a second \"{\".  Most likely this was\nmeant to be an ansible template evaluation instead, so we have to give the\nparser a small hint that we wanted a string instead. The solution here is to\njust quote the entire value.\n\nFor instance, if the original line was:\n\n    app_path: {{ base_path }}/foo\n\nIt should be written as:\n\n    app_path: \"{{ base_path }}/foo\"\n"}
+	to retry, use: --limit @/home/jacob/Labs/industry-4.0-demo/bridge/.openshift-applier/apply.retry
+
+PLAY RECAP ***********************************************************************************************
+app-build-deploy           : ok=20   changed=1    unreachable=0    failed=1   
+

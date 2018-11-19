@@ -1,21 +1,17 @@
 ---
 ansible_connection: local
 
-repo_name: "{{ app_name }}"
-openshift_url: https://{{ console_domain | default('console') }}.{{ base_openshift_url }}:443
 namespace: jacob-iot-temp
 
 deploy:
   NAME: "{{ app_name }}"
 
-
 build:
   NAME: "{{ app_name }}"
-  S2I_BASE_IMAGE: registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift
+  S2I_BASE_IMAGE: "openjdk18-openshift:latest"
   GIT_SOURCE_REF: labs-concepts
-  GIT_SOURCE_URI: https://github.com/jacobsee/industry-4.0-demo
-  PIPELINE_SOURCE_REPOSITORY_URL: https://github.com/jacobsee/industry-4.0-demo
-  PIPELINE_SOURCE_REPOSITORY_REF: labs-concepts
+  GIT_SOURCE_URI: "https://github.com/jacobsee/industry-4.0-demo.git"
+  GIT_SOURCE_CONTEXT_DIR: bridge
 
 openshift_cluster_content:
 - object: app-builds
@@ -23,14 +19,14 @@ openshift_cluster_content:
   - name: "{{ app_name }}-build"
     template: "templates/app-build.yml"
     params_from_vars: "{{ build }}"
-    namespace: "{{ jacob-iot-temp }}"
+    namespace: "{{ namespace }}"
     tags:
     - app-build
-- object: app-deploy
-  content:
-  - name: "{{ app_name }}-deploy"
-    template: "templates/app-deploy.yml"
-    params_from_vars: "{{ deploy }}"
-    namespace: "{{ jacob-iot-temp }}"
-    tags:
-    - app-deploy
+# - object: app-deploy
+#   content:
+#   - name: "{{ app_name }}-deploy"
+#     template: "templates/app-deploy.yml"
+#     params_from_vars: "{{ deploy }}"
+#     namespace: "{{ namespace }}"
+#     tags:
+#     - app-deploy

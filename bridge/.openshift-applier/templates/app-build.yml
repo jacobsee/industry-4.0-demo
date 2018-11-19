@@ -65,10 +65,6 @@ parameters:
   description: Set this to a branch name, tag or other ref of your repository if you
     are not using the default (master) branch.
   value: master
-- name: GIT_SOURCE_SECRET
-  displayName: Secret for git repository
-  description: The name of the OCP secret that has credentials for the pipeline git
-    repository
 - name: GIT_SOURCE_CONTEXT_DIR
   displayName: Source Code Git Context Directory
   description: Set this to the directory where the app source code is if not using the
