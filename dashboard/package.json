@@ -19,6 +19,7 @@
     "node": ">=0.10.10"
   },
   "scripts": {
-    "postinstall": "node_modules/.bin/bower install"
+    "postinstall": "node_modules/.bin/bower install",
+    "start": "node server.js"
   }
 }

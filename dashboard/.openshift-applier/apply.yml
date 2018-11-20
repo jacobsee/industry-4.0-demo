@@ -1,0 +1,8 @@
+---
+- name: Build and Deploy iot app
+  hosts: "apps"
+  tasks:
+    - include_role:
+        name: openshift-applier/roles/openshift-applier
+      tags:
+        - openshift-applier

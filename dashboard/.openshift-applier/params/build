@@ -1,0 +1,5 @@
+NAME=dashboard
+S2I_BASE_IMAGE=nodejs-8-rhel7:latest
+GIT_SOURCE_REF=labs-concepts
+GIT_SOURCE_URI=https://github.com/jacobsee/industry-4.0-demo
+GIT_SOURCE_CONTEXT_DIR=dashboard

@@ -10,14 +10,6 @@ metadata:
     tags: app-deploy
 objects:
 - apiVersion: v1
-  kind: ImageStream
-  metadata:
-    labels:
-      build: "${NAME}"
-    name: "${NAME}"
-  spec: {}
-
-- apiVersion: v1
   kind: DeploymentConfig
   metadata:
     name: "${NAME}"
